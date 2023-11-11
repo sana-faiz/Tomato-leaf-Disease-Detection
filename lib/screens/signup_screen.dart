@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -25,7 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
+        title:  Text(
           "Sign Up",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
@@ -49,15 +50,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter UserName", Icons.person_outline, false, _userNameTextController),
+                  reusableTextField("Enter UserName".tr(), Icons.person_outline, false, _userNameTextController),
                   SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter Email", Icons.person_outline, false, _emailTextController),
+                  reusableTextField("Enter Email".tr(), Icons.person_outline, false, _emailTextController),
                   SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter Password", Icons.lock_outline, true, _passwordTextController),
+                  reusableTextField("Enter Password".tr(), Icons.lock_outline, true, _passwordTextController),
                   SizedBox(
                     height: 20,
                   ),

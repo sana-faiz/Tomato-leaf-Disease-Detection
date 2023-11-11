@@ -1,163 +1,130 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_chatgpt/chatgpt.dart';
-import 'package:plant/screens/chatmessage.dart';
 import 'package:plant/screens/home_screen.dart';
-import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:plant/screens/MessagesScreen.dart';
+import 'package:dialog_flowtter/dialog_flowtter.dart';
+
 
 class ChatBot extends StatefulWidget {
-  const ChatBot({Key? key}) : super(key: key);
+  const ChatBot({super.key});
 
   @override
   State<ChatBot> createState() => _ChatBotState();
 }
 
 class _ChatBotState extends State<ChatBot> {
+  late DialogFlowtter
+  _dialogFlowtter; // late Initialization of the dialogflowtter
+
   final TextEditingController _controller = TextEditingController();
-  final List<chatMessage> _message = [];
-  ChatGPT chatGPT = ChatGPT();
-  StreamSubscription? _subscription;
+
+  List<Map<String, dynamic>> messages = [];
+  // aik list jismay Map aye yani {:} aur isme first string ho second kuch bhi hoskta hai so dynamic lelia
 
   @override
-  void initState(){
+  void initState() {
+    // initializing the dialogflowtter
+    DialogFlowtter.fromFile().then((instance) => _dialogFlowtter = instance);
+    // ager file name dialog_flow_auth ki bjaye kuch aur ho tou fromAssets se access hoga
     super.initState();
   }
 
   @override
-  void dispose(){
-    _subscription?.cancel();
-    super.dispose();
-  }
-
-  void _sendMessage(){
-    chatMessage message = chatMessage(text: _controller.text, sender: "User");
-
-    setState(() {
-      _message.insert(0, message);
-    });
-
-    _controller.clear();
-
-    /*final request = CompleteReq(
-        prompt: message.text, model: kTranslateModelV3, max_tokens: 200);
-    _subscription = chatGPT!
-        .builder("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", orgId: "")
-        .onCompleteStream(request: request)
-        .listen((response) {
-      Vx.log(response!.choices[0].text);
-      chatMessage botMessage =
-      chatMessage(text: response.choices[0].text, sender: "bot");
-
-      setState(() {
-        _message.insert(0, botMessage);
-      });*/
-
-  }
-
-  Widget _buildTextComposer(){
-    return Row(
-      children: [
-        Expanded(
-            child: TextField(
-              controller: _controller,
-              onSubmitted: (value) => _sendMessage(),
-              decoration: InputDecoration(
-                  hintText: "Send a message",
-                  filled: true,
-                  fillColor: Colors.white,
-                  //suffixIcon: Icon(Icons.send),
-              ),
-            )
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(brightness: Brightness.light),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("ChatBot"),
+          backgroundColor: Colors.green,
+          leading: IconButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            icon:Icon(Icons.arrow_back_ios),
+            //replace with our own icon data.
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.white, // <-- SEE HERE
+          ),
+          actions: [
+            IconButton(onPressed: () {},
+            icon:  Icon(Icons.language_sharp))],
+          //centerTitle: true,
         ),
-        IconButton(
-            onPressed: () => _sendMessage(),
-            icon: const Icon(Icons.send))
-      ],
+        body: Column(
+          children: [
+            Expanded(
+              child: MessagesScreen(messages: messages),
+            ),
+            Container(
+              color: Colors.grey.shade300,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 14,
+                ),
+                child: Row(children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.send),
+                    color: Colors.green,
+                    onPressed: () {
+                      sendMessage(_controller.text);
+                      _controller.clear();
+                    },
+                  )
+                ]),
+              ),
+            ),
+          ],
+        ),
+      ),
+
     );
   }
 
+  sendMessage(String text) async {
+    if (text.isEmpty) {
+      print('Message is empty');
+    } else {
+      setState(() {
+        // print("men msg apka add krne lga hun vroo");
+        addMessage(Message(text: DialogText(text: [text])), true);
+      });
 
+      // print("abhi tk code chal rha hai");
+      DetectIntentResponse response = await _dialogFlowtter.detectIntent(
+          queryInput: QueryInput(text: TextInput(text: text)));
 
+      // print(response.message.toString() + "Yeh response msg hai");
+
+      if (response.message == null) return;
+      setState(() {
+        addMessage(response.message!);
+      });
+    }
+  }
+
+  void addMessage(Message message, [bool isUserMessage = false]) {
+    messages.add({
+      'message': message,
+      'isUserMessage': isUserMessage,
+    });
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          leading: const BackButton(
-            color: Colors.black, // <-- SEE HERE
-          ),
-        backgroundColor: Colors.white,
-          title: const Text("Chat Screen", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),)),
-      body: SafeArea(
-          /*width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(gradient: LinearGradient(colors: [
-            Colors.purple ,Colors.orange
-          ],
-              begin:Alignment.topCenter, end: Alignment.bottomCenter
-          )),
-
-          alignment: Alignment(0, 0),*/
-        child: Column(
-          children: <Widget> [
-            Flexible(child: ListView.builder(
-              reverse: true,
-                padding: EdgeInsets.all(20.0),
-                itemCount: _message.length,
-                itemBuilder: (context, index){
-                  return _message[index];
-                }
-            )),
-
-            Container(
-                  decoration: BoxDecoration(
-
-                  ),
-                  child: _buildTextComposer(),
-                )
-          ],
-        ),
-      )
-    );
+  void dispose() {
+    _controller.dispose();
+    _dialogFlowtter.dispose();
+    super.dispose();
   }
 }
-/*
-Container(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-             Container(
-               decoration: BoxDecoration(
 
-               ),
-               child: _buildTextComposer(),
-             )
-          ],
-        )
- */
-
-
-
-
-
-
-
-            /*SizedBox(
-              width: 200,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                      padding:
-                      MaterialStateProperty.all(const EdgeInsets.all(20)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))
-                      ),
-                      textStyle: MaterialStateProperty.all(
-                          const TextStyle(fontSize: 14, color: Colors.white))),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
-                  },
-                  child: const Text('Home', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),)),
-            ),*/

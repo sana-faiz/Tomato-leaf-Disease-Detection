@@ -1,0 +1,26 @@
+{
+    "Enter UserName": "صارف کا نام درج کریں۔",
+  "Enter Password": "پاس ورڈ درج کریں",
+  "LOG IN ": "لاگ ان کریں",
+  "Don't have account?": "اکاؤنٹ نہیں ہے؟",
+
+  "Enter Email": "ای میل درج کریں۔",
+
+  "Scan Your Leaf": "اپنے لیف کو اسکین کریں۔",
+  "ChatBot":  "چیٹ بوٹ",
+  "LOGOUT": "لاگ آوٹ",
+
+  "Select Image": "تصویر منتخب کریں۔",
+  "Select Your Leaf": "اپنا لیف منتخب کریں۔",
+  "Back": "پیچھے",
+
+  "Select Image From": "سے تصویر منتخب کریں۔",
+  "Gallery": "گیلری",
+  "Camera": "کیمرہ",
+
+  "English": "انگریزی",
+  "Urdu": "اردو",
+  "No Image Selected !": "کوئی تصویر منتخب نہیں!",
+
+  "Language": "زبان"
+}

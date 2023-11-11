@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plant/screens/home_screen.dart';
@@ -43,11 +44,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(
                     height: 30,
                   ),
-                  reusableTextField("Enter UserName", Icons.person_outline, false, _emailTextController),
+                  reusableTextField("Enter Email".tr(), Icons.person_outline, false, _emailTextController),
                   SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter Password", Icons.lock_outline, true, _passwordTextController),
+                  reusableTextField("Enter Password".tr(), Icons.lock_outline, true, _passwordTextController),
                   SizedBox(
                     height: 20,
                   ),
@@ -75,14 +76,14 @@ class _SignInScreenState extends State<SignInScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have account?",
+         Text("Don't have account?".tr(),
             style: TextStyle(color:Colors.white70)),
         GestureDetector(
             onTap: (){
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SignUpScreen()));
             },
-            child: const Text(
+            child: Text(
               "Sign Up",
               style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             )

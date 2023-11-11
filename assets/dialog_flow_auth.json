@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "diseasebot-tgip",
+  "private_key_id": "b7ef30f99bc48fb128fe2a680096ac94561ad22d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC3po07NA2aKQ6C\nz9fW/X+O+p24GAxzsR+H57CGnDjUfTushrjmRoiT0ogBuJVzguHvy2RtOfp8jrgc\n69SWdBevM861lpBlhv0OdBZFgZ3ExCPexAEuBoY9dV9BFqLvAtY7piFz8Ys8bBgP\ni5M18wi4o9yXeufOrGhq5wleo6u8M+SHyg4z5KHOpE3nMkJ5uQSECxHgVYy1PSLy\nfrInIQQ3aKW3gLy5Eg3lcLuFi00Yj2Fcoa4MMag92mckIgLAvo6c529xXbN42A3r\nxNnaM+iG8CZsFp3gYcI95DZ++1FBQQIqJWTpZve2mrhJFDu9yVJpkBST0zxtlVnw\n71Xhpc7rAgMBAAECggEAAOqzb3VkkKhI0BgH3KUPqHU8KVRGvPhy5Fj16s4dLdkM\nMwx0dYMqS7ae2DIFiPnryn3U8Vil6qOZwVyKB1BADVoFsPwLRNPQ2pbIxQMPIxF+\n7liYeumBwmJzcx3mT/7PIVAZ1abXNO+DNTyoo6R5dCvZPjuuVuafGigvcJ9XjE0h\n2aFBz1DGYgG1gWwU0mfWK/BzWY7DxLLeVNI+ACEulL4Cxyai5Pje6S4Zvt3KsZfI\nIlaDD8btr+M46Zuo72iBO7fMCJQSxOKj6M/i92zpUdJiVk2ojpns9EIoZXWwofk6\ngL4pxZcEEcOQ5hsKvGH9QDFuu9YA3PEHI9UY3EiQrQKBgQDjC1OpBC0je670hzkG\nP5pVGdHo0Bc9igTr4AmcL98I0r891Ry8B1xVL2x81NtV6i0yFi4WfHdXaggVYg0V\nbyobzur3QrvezqVuEYsRotDlWUfUx3Iqawtv3fbcTBoVd0qlk5rkJUgSPWmeC9VP\nyOIhbPhzoBN4CfRziBeb/fR2NQKBgQDPEnvKEafRsr1kfNtwyyUlOPZLGD1FjAJU\nycKPWZOV/dMfP5KGSEJl2/Us2XowQwIF+Jx9YhdT+InV/7XSh+Dj1BeHaFJEl1vd\ncctdjjTqWQ5Owf0cRRkdaeGf4Kb/R6iGFOlNL3xocxY9k8F1Vw7c27cdjAQT++fH\n3zPG5MtUnwKBgDaQVEy8KjTq1oMBtFyiEG7/Q4kV6V/quYAOWYDlqE4wh7FOdBdk\nFXaLbSEa7pNZMf9lgTH6O5wQaVzqMYbDLnV8Zs+BhDDprKwlHyzf2iAkMrUaMX+s\nNhVuXJNY3rPl9VSRgpnts8Jea/GFmoAQIPgzfgoboFIq4kqZnELq50M5AoGAdlMg\ni2olVE1nreku17gtZKS1EFosgPYtStfzpkhQblAZeOyxxKu7zUqwQc2P5c4UdOcI\nPRl1LRWDZdZ1xnTAjE9glo6FHA7FfreMtswQ7qyu4VA2WxYc8NLVC6+qnYsMAHoo\nimONGn5RAiTRUkTKCGhArdCZb/XtDyg7BPcuPQ8CgYB6ov+71D+isVedwQpnVwQG\nOfN8Cnj+SoXEd6cbWQqIfaPfLdtiAm04fLyqY7sFKO4b2+vawcZnSuNszDtGo0lz\nBvuYZNjsPwUXp8utsHy8Mwv5XjrzSvjkWhSg5qvhUTtowKEHvgXV+y9ojN6s39RN\nCWP0qzpEc9Tk2dkb/E32PQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "diseasebot@diseasebot-tgip.iam.gserviceaccount.com",
+  "client_id": "105191028338643362020",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/diseasebot%40diseasebot-tgip.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
